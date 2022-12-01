@@ -28,7 +28,13 @@ class Program
         
         maxes.Sort();
         maxes.Reverse();
-        Console.WriteLine();
+
+        int total = 0;
+        for (int i = 0; i < getTopCount; i++)
+        {
+            total += maxes[i];
+        }
+        Console.WriteLine(total);
     }
     
     
