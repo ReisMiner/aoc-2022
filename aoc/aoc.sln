@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "solveHelpers", "solveHelpers\solveHelpers.csproj", "{23177641-EBD6-400B-A21E-33144761C658}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day 01", "Day 01\Day 01.csproj", "{F7A138C7-579B-4E02-844C-838FA1CC2930}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{23177641-EBD6-400B-A21E-33144761C658}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23177641-EBD6-400B-A21E-33144761C658}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23177641-EBD6-400B-A21E-33144761C658}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23177641-EBD6-400B-A21E-33144761C658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7A138C7-579B-4E02-844C-838FA1CC2930}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7A138C7-579B-4E02-844C-838FA1CC2930}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7A138C7-579B-4E02-844C-838FA1CC2930}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7A138C7-579B-4E02-844C-838FA1CC2930}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
