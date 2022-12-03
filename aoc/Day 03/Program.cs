@@ -8,49 +8,18 @@ class Program
     static void Main(string[] args)
     {
         List<string> lines = FileHelper.ReadInputFile(args);
-        int total = 0;
 
-        List<char> badges = new();
+        //task 1
+        List<char> letters = Task1(lines);
+        Console.WriteLine(PrioConverter(letters));
 
-        int count = 0;
-
-        for (int i = 0; i < lines.Count; i += 3)
-        {
-            foreach (var letter in lines[i])
-            {
-                if (lines[i + 1].Contains(letter))
-                {
-                    if (lines[i + 2].Contains(letter))
-                    {
-                        badges.Add(letter);
-                        break;
-                    }
-                }
-            }
-        }
-        
-        foreach (char c in badges)
-        {
-            int letter = Convert.ToInt32(c);
-
-            if (letter < 96)
-            {
-                total += letter - 38;
-            }
-            else
-            {
-                total += letter - 96;
-            }
-        }
-        Console.WriteLine(total);
-
+        //task 2
+        List<char> badges = Task2(lines);
+        Console.WriteLine(PrioConverter(badges));
     }
 
-    static void Task1(string[] args)
+    static List<char> Task1(List<string> lines)
     {
-        List<string> lines = FileHelper.ReadInputFile(args);
-        int total = 0;
-
         List<char> letters = new();
 
         //grab letters
@@ -69,7 +38,35 @@ class Program
             }
         }
 
-        foreach (char c in letters)
+        return letters;
+    }
+
+    static List<char> Task2(List<string> lines)
+    {
+        List<char> letters = new();
+
+        for (int i = 0; i < lines.Count; i += 3)
+        {
+            foreach (var letter in lines[i])
+            {
+                if (lines[i + 1].Contains(letter))
+                {
+                    if (lines[i + 2].Contains(letter))
+                    {
+                        letters.Add(letter);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return letters;
+    }
+
+    static int PrioConverter(List<char> badges)
+    {
+        int total = 0;
+        foreach (char c in badges)
         {
             int letter = Convert.ToInt32(c);
 
@@ -83,6 +80,6 @@ class Program
             }
         }
 
-        Console.WriteLine(total);
+        return total;
     }
 }
