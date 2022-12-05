@@ -6,10 +6,42 @@ class Program
 {
     static void Main(string[] args)
     {
-        List<Move> moves = new();
         List<string> lines = FileHelper.ReadInputFile(args);
 
         //setup list array with correct amount of indexes
+        var t = Setup(lines);
+        Task1(t);
+
+        foreach (List<string> list in t.containers)
+        {
+            Console.Write(list[list.Count - 1]);
+        }
+
+        Console.WriteLine();
+    }
+
+    static void Task1((List<string>[] containers, List<Move> moves) t)
+    {
+        foreach (Move move in t.moves)
+        {
+            List<string> target = t.containers[move.ToIndex];
+            List<string> source = t.containers[move.FromIndex];
+            List<int> toRemove = new();
+
+            for (int i = 0; i < move.Amount; i++)
+            {
+                int index = source.Count - i - 1;
+                toRemove.Add(index);
+                target.Add(source[index]);
+            }
+
+            toRemove.ForEach(x => source.RemoveAt(x));
+        }
+    }
+
+    static (List<string>[] containers, List<Move> moves) Setup(List<string> lines)
+    {
+        List<Move> moves = new();
         int rows = 0;
         foreach (var line in lines)
         {
@@ -29,7 +61,6 @@ class Program
             containers[i] = new List<string>();
         }
 
-        //initialize lists
         foreach (var line in lines)
         {
             for (int i = 0; i < line.Length; i++)
@@ -47,29 +78,7 @@ class Program
             list.Reverse();
         }
 
-        //do moves
-        foreach (Move move in moves)
-        {
-            List<string> target = containers[move.ToIndex];
-            List<string> source = containers[move.FromIndex];
-            List<int> toRemove = new();
-
-            for (int i = 0; i < move.Amount; i++)
-            {
-                int index = source.Count - i - 1;
-                toRemove.Add(index);
-                target.Add(source[index]);
-            }
-
-            toRemove.ForEach(x => source.RemoveAt(x));
-        }
-
-        foreach (List<string> list in containers)
-        {
-            Console.Write(list[list.Count - 1]);
-        }
-
-        Console.WriteLine();
+        return (containers, moves);
     }
 }
 
