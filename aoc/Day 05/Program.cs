@@ -11,7 +11,14 @@ class Program
         //setup list array with correct amount of indexes
         var t = Setup(lines);
         Task1(t);
-
+        foreach (List<string> list in t.containers)
+        {
+            Console.Write(list[list.Count - 1]);
+        }
+        Console.WriteLine();
+        
+        t = Setup(lines);
+        Task2(t);
         foreach (List<string> list in t.containers)
         {
             Console.Write(list[list.Count - 1]);
@@ -36,6 +43,22 @@ class Program
             }
 
             toRemove.ForEach(x => source.RemoveAt(x));
+        }
+    }
+
+    static void Task2((List<string>[] containers, List<Move> moves) t)
+    {
+        foreach (Move move in t.moves)
+        {
+            List<string> target = t.containers[move.ToIndex];
+            List<string> source = t.containers[move.FromIndex];
+            
+            int index = source.Count  - move.Amount;
+            index = index <= 0 ? 0 : index;
+            List<string> toAppend = source.GetRange(index, move.Amount);
+
+            target.AddRange(toAppend);
+            source.RemoveRange(index, move.Amount);
         }
     }
 
