@@ -97,7 +97,7 @@ class Program
                         break;
                     }
 
-                    if (grid[y][i] < treeValue)
+                    if (grid[y][j] < treeValue)
                     {
                         isVisible = true;
                     }
@@ -119,7 +119,7 @@ class Program
                         break;
                     }
 
-                    if (grid[y][i] < treeValue)
+                    if (grid[y][j] < treeValue)
                     {
                         isVisible = true;
                     }
