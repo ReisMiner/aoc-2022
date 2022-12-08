@@ -8,10 +8,17 @@ class Program
     {
         List<string> lines = FileHelper.ReadInputFile(args);
         Dir root = ReadInput(lines);
-        
+
         // Task 1
         root.UpdateTotalSize();
-        Console.WriteLine(root.GetSmallerThan(new List<int>(), 100000).Sum());
+        Console.WriteLine(root.CompareForTaskSolution(new List<int>(), 1, 100000).Sum());
+
+        // Task 2
+        int DiskSpace = 70000000;
+        int UpdateSize = 30000000;
+        var x = root.CompareForTaskSolution(new List<int>(), 2, UpdateSize - DiskSpace + root.TotalSize);
+        x.Sort();
+        Console.WriteLine(x.First());
     }
 
 
@@ -94,19 +101,28 @@ class Dir
         return TotalSize;
     }
 
-    public List<int> GetSmallerThan(List<int> x, int comperator)
+    public List<int> CompareForTaskSolution(List<int> x, int task, int num)
     {
         List<int> nums = x;
 
         foreach (Dir subDir in SubDirs)
         {
-            if (subDir.TotalSize <= comperator)
+            if (task == 1)
             {
-                Console.WriteLine(subDir.TotalSize);
-                nums.Add(subDir.TotalSize);
+                if (subDir.TotalSize <= num)
+                {
+                    nums.Add(subDir.TotalSize);
+                }
+            }
+            else
+            {
+                if (subDir.TotalSize >= num)
+                {
+                    nums.Add(subDir.TotalSize);
+                }
             }
 
-            subDir.GetSmallerThan(nums, comperator);
+            subDir.CompareForTaskSolution(nums, task, num);
         }
 
         return nums;
