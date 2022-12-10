@@ -5,6 +5,7 @@ namespace Day_10;
 
 class Program
 {
+    static int _modifier;
     static int _cycle = 1;
 
     static int Cycle
@@ -15,9 +16,33 @@ class Program
             if ((_cycle - 20) % 40 == 0)
             {
                 int val = RegisterX * _cycle;
-                Console.WriteLine($"Add Signal {val}, cycle = {_cycle}, registerX = {RegisterX}");
                 SignalStrengths.Add(val);
             }
+
+            if ((_cycle - 1) % 40 == 0 && _cycle - 1 != 0)
+            {
+                Console.WriteLine("");
+                _modifier += 40;
+            }
+
+
+            if (RegisterX - 1 == _cycle - 1 - _modifier)
+            {
+                Console.Write("#");
+            }
+            else if (RegisterX == _cycle - 1 - _modifier)
+            {
+                Console.Write("#");
+            }
+            else if (RegisterX + 1 == _cycle - 1 - _modifier)
+            {
+                Console.Write("#");
+            }
+            else
+            {
+                Console.Write(".");
+            }
+
             _cycle = value;
         }
     }
@@ -25,6 +50,7 @@ class Program
     static List<int> SignalStrengths { get; set; }
 
     static int RegisterX { get; set; } = 1;
+
 
     static void Main(string[] args)
     {
