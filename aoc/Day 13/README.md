@@ -1,0 +1,1 @@
+﻿doing this is pain in c# so i chose python, a dynamic typed language
